@@ -6,7 +6,7 @@ Hide and Seek/[Bb]uild/
 Hide and Seek/[Bb]uilds/
 Hide and Seek/[Ll]ogs/
 Hide and Seek/[Uu]ser[Ss]ettings/
-
+Hide and Seek/[Aa]ssets/TextMesh Pro/*
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 Hide and Seek/[Mm]emoryCaptures/
@@ -68,3 +68,4 @@ Hide and Seek/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 # Temporary auto-generated Android Assets
 Hide and Seek/[Aa]ssets/[Ss]treamingAssets/aa.meta
 Hide and Seek/[Aa]ssets/[Ss]treamingAssets/aa/*
+Hide and Seek/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader
