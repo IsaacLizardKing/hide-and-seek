@@ -1459,6 +1459,94 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TX Tileset Wall_Lampon1
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 256
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 32}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e97e6e04a4d5b9e8113a0ed8d368a2
+      internalID: 1087418281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Wall_Lampon2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 256
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 32}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ac8be0f512f2141bba77b026870af3
+      internalID: 2131510917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Wall_Lampon3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 256
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 32}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da49187fbd67c9fcab06609705469554
+      internalID: -118352192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Wall_Lampon4
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 256
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 32}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4b68ebf07208295908fc8d8340a365
+      internalID: -397453036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1473,6 +1561,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      TX Tileset Wal: -397453036
       TX Tileset Wall_0: -1733087341866461178
       TX Tileset Wall_1: 6957734447361721616
       TX Tileset Wall_10: 966269131
@@ -1515,7 +1604,6 @@ TextureImporter:
       TX Tileset Wall_44: -293671704
       TX Tileset Wall_45: 1245302309
       TX Tileset Wall_46: 165339150
-      TX Tileset Wall_47: 1087418281
       TX Tileset Wall_48: 1385931424
       TX Tileset Wall_49: 559383705
       TX Tileset Wall_5: -8038740358467470550
@@ -1534,6 +1622,10 @@ TextureImporter:
       TX Tileset Wall_7: -5954229690154693420
       TX Tileset Wall_8: -522149132528552129
       TX Tileset Wall_9: 6981085378657702106
+      TX Tileset Wall_Lampon1: 1087418281
+      TX Tileset Wall_Lampon2: 2131510917
+      TX Tileset Wall_Lampon3: -118352192
+      TX Tileset Wall_Lampon4: -397453036
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
