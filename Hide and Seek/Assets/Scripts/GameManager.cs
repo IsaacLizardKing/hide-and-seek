@@ -25,17 +25,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] GameObject dialoguePanel;
+    [SerializeField] GameObject CharacterSprite;
 
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
     bool skipLineTriggered;
 
-    public void StartDialogue(string[] dialogue, int startPosition, string name)
+    public void StartDialogue(string[] dialogue, int startPosition, string name,Sprite spritename)
     {
         nameText.text = name + "...";
+        CharacterSprite.GetComponent<SpriteRenderer>().sprite=spritename;
         dialoguePanel.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(RunDialogue(dialogue, startPosition));
+
     }
 
     IEnumerator RunDialogue(string[] dialogue, int startPosition)
