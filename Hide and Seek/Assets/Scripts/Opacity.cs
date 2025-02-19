@@ -11,7 +11,7 @@ public class Opacity : MonoBehaviour
     private bool sentinel;
     void Start()
     {
-        embers.Stop();
+        embers.Pause();
         sentinel = false;
     }
 
@@ -22,7 +22,7 @@ public class Opacity : MonoBehaviour
             var color = tlmp.color;
             tlmp.color = new Color (color[0], color[1], color[2], color[3] - color[3] * lerpSpeed);
         }
-        if (tlmp.color[3] == 0 && !sentinel) {
+        if (tlmp.color[3] < 0.1f && !sentinel) {
             sentinel = true;
             embers.Play();
         }
