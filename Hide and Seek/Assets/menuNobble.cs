@@ -7,20 +7,18 @@ public class menuNobble : MonoBehaviour
     public float slurp;
     public Vector3 option1;
     public Vector3 option2;
-    public string SceneToLoad;
+    public int sceneToLoad;
     
     private float curSlurp;
     private Vector3 currDest;
 
-    void Start()
-    {
+    void Start() {
         curSlurp = 0;
         currDest = option1;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         var vertical = Input.GetAxisRaw("Vertical");
         if(vertical > 0.3f || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
             currDest = option1;
@@ -36,7 +34,7 @@ public class menuNobble : MonoBehaviour
             curSlurp = 0;
         }
         if(Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Space)) {
-            if (currDest == option1) { /*SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);*/ }
+            if (currDest == option1) { SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single); }
             else { Debug.Log("Bye Bye"); Application.Quit(); }
         }
     }

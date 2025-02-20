@@ -17,15 +17,14 @@ public class TalkingPlayer : MonoBehaviour
     void Interact()
     {
         Debug.Log("Interact");
-        if (inConversation)
-        {
+        if (inConversation) {
             Debug.Log("Skipping Line");
             GameManager.Instance.SkipLine();
         }
         else
         {
             Debug.Log("Looking for NPC");
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, talkDistance, Vector2.up, 0, LayerMask.GetMask("NPC"));
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, talkDistance, GameManager.Instance.playerFacing, 1.25f, LayerMask.GetMask("NPC"));
             if (hit)
             {
                 Debug.Log("Hit Something!!" + hit.collider.gameObject.name);

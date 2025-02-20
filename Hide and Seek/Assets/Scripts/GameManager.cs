@@ -29,7 +29,9 @@ public class GameManager : MonoBehaviour
 
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
+    public Vector2 playerFacing;
     bool skipLineTriggered;
+
 
     public void StartDialogue(string[] dialogue, int startPosition, string name,Sprite spritename)
     {

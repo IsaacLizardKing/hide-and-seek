@@ -21,7 +21,7 @@ public class Sliide : MonoBehaviour
             if(this.transform.position.y < 0) {
                 curSlurp = curSlurp + (slurp - curSlurp) * slurp;
                 mover.transform.position = Vector3.Lerp(mover.transform.position, targetPos, curSlurp);
-        }
+            }
         }
     }
 }

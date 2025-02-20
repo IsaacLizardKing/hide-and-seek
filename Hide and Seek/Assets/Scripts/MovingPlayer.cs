@@ -15,6 +15,7 @@ public class MovingPlayer: MonoBehaviour
     void Start()
     {
         RB2D = GetComponent<Rigidbody2D>();
+        GameManager.Instance.playerFacing = Vector2.up;
     }
 
     // Update is called once per frame
@@ -23,7 +24,9 @@ public class MovingPlayer: MonoBehaviour
         // Gives a value between -1 and 1
         horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-
+        if(Mathf.Abs(vertical) > 0.15f || Mathf.Abs(horizontal) > 0.15f) {
+            GameManager.Instance.playerFacing = new Vector2(vertical, horizontal);
+        }
     }
 
     void FixedUpdate()
