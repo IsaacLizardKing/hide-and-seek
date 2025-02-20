@@ -27,27 +27,40 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] GameObject CharacterSprite;
 
+    // delay typing text until after the panel has moved into place
+    [SerializeField] float DialoguePanelDelay; 
+
+    // target Lerp speed for the dialogue panel
+    [SerializeField] float slurpSpeed; 
+
+    // Desired position for the dialogue panel while on
+    [SerializeField] Vector3 DialogueOn; 
+    
+    // Desired position for the dialogue panel while off
+    [SerializeField] Vector3 DialogueOff; 
+
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
     public Vector2 playerFacing;
     bool skipLineTriggered;
-
+    float delay;
+    float curSlurp;
 
     public void StartDialogue(string[] dialogue, int startPosition, string name,Sprite spritename)
     {
         nameText.text = name + "...";
-        CharacterSprite.GetComponent<SpriteRenderer>().sprite=spritename;
-        dialoguePanel.SetActive(true);
+        CharacterSprite.GetComponent<SpriteRenderer>().sprite = spritename;
+        delay = DialoguePanelDelay;
         StopAllCoroutines();
+        StartCoroutine(DeployDialogue());
         StartCoroutine(RunDialogue(dialogue, startPosition));
-
     }
 
     IEnumerator RunDialogue(string[] dialogue, int startPosition)
     {
         skipLineTriggered = false;
         OnDialogueStarted?.Invoke();
-
+        
         for (int i = startPosition; i < dialogue.Length; i++)
         {
             //dialogueText.text = dialogue[i];
@@ -61,9 +74,8 @@ public class GameManager : MonoBehaviour
             }
             skipLineTriggered = false;
         }
-
         OnDialogueEnded?.Invoke();
-        dialoguePanel.SetActive(false);
+        EndDialogue();
     }
 
     public void SkipLine()
@@ -71,47 +83,64 @@ public class GameManager : MonoBehaviour
         skipLineTriggered = true;
     }
 
+    // depricated?
     public void ShowDialogue(string dialogue, string name)
     {
         nameText.text = name + "...";
         StartCoroutine(TypeTextUncapped(dialogue));
-        dialoguePanel.SetActive(true);
     }
 
     public void EndDialogue()
     {
         nameText.text = null;
         dialogueText.text = null;
-        dialoguePanel.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(UndeployDialogue());
     }
 
     float charactersPerSecond = 90;
 
     IEnumerator TypeTextUncapped(string line)
     {
-        float timer = 0;
+        float timer = delay;
         float interval = 1 / charactersPerSecond;
         string textBuffer = null;
         char[] chars = line.ToCharArray();
         int i = 0;
 
-        while (i < chars.Length)
-        {
-            if (timer < Time.deltaTime)
-            {
+        while (i < chars.Length) {
+            if (timer < Time.deltaTime) {
                 textBuffer += chars[i];
                 dialogueText.text = textBuffer;
                 timer += interval;
                 i++;
-            }
-            else
-            {
+            } else {
                 timer -= Time.deltaTime;
                 yield return null;
             }
         }
+        delay = 0;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    IEnumerator DeployDialogue() {
+        while (dialoguePanel.transform.position != DialogueOn) {
+            curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
+            dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOn, curSlurp);
+            yield return null;
+        }
+        curSlurp = 0;
+    }
+
+    IEnumerator UndeployDialogue() {
+        while (dialoguePanel.transform.position != DialogueOff) {
+            curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
+            dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOff, curSlurp);
+            yield return null;
+        }
+        curSlurp = 0;
+    }
+
+    /* Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
@@ -121,5 +150,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-    }
+    }*/
 }
