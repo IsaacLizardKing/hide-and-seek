@@ -131,7 +131,6 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator DeployDialogue() {
-        
         while (dialoguePanel.transform.position != DialogueOn) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
             dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOn, curSlurp);
