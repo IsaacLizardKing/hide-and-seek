@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     bool skipLineTriggered;
     float delay;
     float curSlurp;
-    Transform Porigin; // portrait origin ;3
+    (Vector3, Vector3) Porigin; // portrait origin ;3
 
     public void StartDialogue(string[] dialogue, int startPosition, string name, Sprite spritename, (Vector3, Vector3) portrait)
     {
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         CharacterSprite.GetComponent<SpriteRenderer>().sprite = spritename;
         delay = DialoguePanelDelay;
         CharacterPortrait = portrait;
-        Porigin = CharacterSprite.transform;
+        Porigin = (CharacterSprite.transform.localPosition, CharacterSprite.transform.localScale);
         StopAllCoroutines();
         StartCoroutine(DeployDialogue());
         StartCoroutine(RunDialogue(dialogue, startPosition));
@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
         while (dialoguePanel.transform.position != DialogueOff) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
             dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOff, curSlurp);
-            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, Porigin.localPosition, curSlurp);
-            CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, Porigin.localScale, curSlurp);
+            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, Porigin.Item1, curSlurp);
+            CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, Porigin.Item2, curSlurp);
             yield return null;
         }
         curSlurp = 0;
