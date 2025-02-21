@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] GameObject CharacterSprite;
 
-    [SerializeField] Transform CharacterPortrait;
+    [SerializeField] (Vector3, Vector3) CharacterPortrait;
 
     
 
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     float curSlurp;
     Transform Porigin; // portrait origin ;3
 
-    public void StartDialogue(string[] dialogue, int startPosition, string name, Sprite spritename, Transform portrait)
+    public void StartDialogue(string[] dialogue, int startPosition, string name, Sprite spritename, (Vector3, Vector3) portrait)
     {
         nameText.text = name + "...";
         CharacterSprite.GetComponent<SpriteRenderer>().sprite = spritename;
@@ -135,8 +135,8 @@ public class GameManager : MonoBehaviour
         while (dialoguePanel.transform.position != DialogueOn) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
             dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOn, curSlurp);
-            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, CharacterPortrait.position, curSlurp);
-            CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, CharacterPortrait.localScale, curSlurp);
+            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, CharacterPortrait.Item1, curSlurp);
+            CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, CharacterPortrait.Item2, curSlurp);
             yield return null;
         }
         curSlurp = 0;
