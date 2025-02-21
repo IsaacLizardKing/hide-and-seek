@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: DefaultVolumeProfile
+  m_Script: {fileID: 11500000, guid: 86b488568d44c444aaf3679f12e2f029, type: 3}
+  m_Name: Jory1
   m_EditorClassIdentifier: 
-  components: []
+  dialogue:
+  - 'I am very sleepy
+
+    help
+
+'
