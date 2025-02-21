@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] GameObject CharacterSprite;
 
+    [SerializeField] Transform CharacterPortrait;
+
+    
+
     // delay typing text until after the panel has moved into place
     [SerializeField] float DialoguePanelDelay; 
 
@@ -39,18 +43,22 @@ public class GameManager : MonoBehaviour
     // Desired position for the dialogue panel while off
     [SerializeField] Vector3 DialogueOff; 
 
+
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
     public Vector2 playerFacing;
     bool skipLineTriggered;
     float delay;
     float curSlurp;
+    Transform Porigin; // portrait origin ;3
 
-    public void StartDialogue(string[] dialogue, int startPosition, string name,Sprite spritename)
+    public void StartDialogue(string[] dialogue, int startPosition, string name, Sprite spritename, Transform portrait)
     {
         nameText.text = name + "...";
         CharacterSprite.GetComponent<SpriteRenderer>().sprite = spritename;
         delay = DialoguePanelDelay;
+        CharacterPortrait = portrait;
+        Porigin = CharacterSprite.transform;
         StopAllCoroutines();
         StartCoroutine(DeployDialogue());
         StartCoroutine(RunDialogue(dialogue, startPosition));
@@ -123,9 +131,12 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator DeployDialogue() {
+        
         while (dialoguePanel.transform.position != DialogueOn) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
             dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOn, curSlurp);
+            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, CharacterPortrait.position, curSlurp);
+            CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, CharacterPortrait.localScale, curSlurp);
             yield return null;
         }
         curSlurp = 0;
@@ -135,6 +146,8 @@ public class GameManager : MonoBehaviour
         while (dialoguePanel.transform.position != DialogueOff) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
             dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOff, curSlurp);
+            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, Porigin.position, curSlurp);
+            CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, Porigin.localScale, curSlurp);
             yield return null;
         }
         curSlurp = 0;
