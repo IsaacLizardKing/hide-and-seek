@@ -31,7 +31,7 @@ public class TalkingPlayer : MonoBehaviour
 
                 if (hit.collider.gameObject.TryGetComponent(out NPC npc))
                 {
-                    GameManager.Instance.StartDialogue(npc.dialogueAsset.dialogue, npc.StartPosition, npc.npcName, npc.SpriteName, npc.PortPosition);
+                    GameManager.Instance.StartDialogue(npc.dialogueAsset.dialogue, npc.StartPosition, npc.npcName, npc.SpriteName);
                     
                 }
             }

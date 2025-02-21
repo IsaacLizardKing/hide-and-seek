@@ -10,7 +10,6 @@ public class NPC : MonoBehaviour
     public string npcName;
     public DialogueAsset dialogueAsset;
     public Sprite SpriteName; 
-    public Transform PortPosition; // relative position to the camera for the portrait;
 
     [HideInInspector]
     public int StartPosition
