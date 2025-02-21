@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         while (dialoguePanel.transform.position != DialogueOff) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
             dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOff, curSlurp);
-            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, Porigin.position, curSlurp);
+            CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, Porigin.localPosition, curSlurp);
             CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, Porigin.localScale, curSlurp);
             yield return null;
         }
