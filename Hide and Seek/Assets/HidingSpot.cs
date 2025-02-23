@@ -3,6 +3,7 @@ using UnityEngine;
 public class HidingSpot : MonoBehaviour
 {
     public GameObject Hider;
+    public GameObject HideTrigger;
     public Vector3 HidePosition;
     public Vector3 RevealPosition;
     public float slurp;
@@ -12,12 +13,13 @@ public class HidingSpot : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
        // destination = Hider.transform.position;
-       destination = HidePosition;
+       destination = Hider.transform.position;
     }
 
     // Update is called once per frame
     void Update() {
         if (Hider.transform.position != destination) Hider.transform.position = Vector3.Lerp(Hider.transform.position, destination, slurp);
+        if (HideTrigger.transform.position.y < 0 && destination != HidePosition && destination != RevealPosition) OnHide();
     }
 
     public void OnFind() {

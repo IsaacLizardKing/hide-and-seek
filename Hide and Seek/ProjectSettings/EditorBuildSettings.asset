@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 3ae1dd10a96b84ccb8084a0db7b088c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Hiding Und Seeking.unity
     guid: 49839c9e4212a695a915b53a46080c94
+  - enabled: 0
+    path: Assets/Scenes/Seekin.unity
+    guid: b5df38ec838de12d2ac78783799e22d5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
