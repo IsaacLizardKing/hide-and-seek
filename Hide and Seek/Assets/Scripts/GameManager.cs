@@ -131,9 +131,9 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator DeployDialogue() {
-        while (dialoguePanel.transform.position != DialogueOn) {
+        while (dialoguePanel.transform.localPosition != DialogueOn) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
-            dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOn, curSlurp);
+            dialoguePanel.transform.localPosition = Vector3.Lerp(dialoguePanel.transform.localPosition, DialogueOn, curSlurp);
             CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, CharacterPortrait.Item1, curSlurp);
             CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, CharacterPortrait.Item2, curSlurp);
             yield return null;
@@ -142,9 +142,9 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator UndeployDialogue() {
-        while (dialoguePanel.transform.position != DialogueOff) {
+        while (dialoguePanel.transform.localPosition != DialogueOff) {
             curSlurp = curSlurp + (slurpSpeed - curSlurp) * slurpSpeed;
-            dialoguePanel.transform.position = Vector3.Lerp(dialoguePanel.transform.position, DialogueOff, curSlurp);
+            dialoguePanel.transform.localPosition = Vector3.Lerp(dialoguePanel.transform.localPosition, DialogueOff, curSlurp);
             CharacterSprite.transform.localPosition = Vector3.Lerp(CharacterSprite.transform.localPosition, Porigin.Item1, curSlurp);
             CharacterSprite.transform.localScale = Vector3.Lerp(CharacterSprite.transform.localScale, Porigin.Item2, curSlurp);
             yield return null;
