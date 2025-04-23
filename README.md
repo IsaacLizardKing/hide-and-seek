@@ -3,7 +3,7 @@
 Hide and seek is a game about hiding and seeking with your favorite characters!
 
 ## Premise
-It’s a nice winter day in funtime land, and nice weather only leads to one thing, Hide and Seek! You and some of your favorite friends (characters from your favorite movies, games and media), all come together to play their favorite game, that beeing Hide and Seek! 
+It’s a nice winter day in funtime land, and nice weather only leads to one thing, Hide and Seek! You and some of your favorite friends (characters from your favorite movies, games and media), all come together to play their favorite game, that being Hide and Seek! 
 
 
 ## Mechanics
